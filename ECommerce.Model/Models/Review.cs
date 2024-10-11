@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerce.Model.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Model.Models
 {
-    public class Review
+    public class Review : IBaseEntity
     {
         public int ID { get; set; }
 

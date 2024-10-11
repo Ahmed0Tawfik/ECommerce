@@ -7,7 +7,7 @@ using ECommerce.Model.Interfaces;
 
 namespace ECommerce.EF.Repositories
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : class, IBaseEntity
     {
         protected readonly ApplicationDbContext _context;
 
@@ -21,20 +21,11 @@ namespace ECommerce.EF.Repositories
             return entity;
         }
 
-        public void Delete(int id)
-        {
-            _context.Set<T>().Remove(FindbyId(id));
-        }
+        public void Delete(int id) => _context.Set<T>().Remove(Find(id));
 
-        public IEnumerable<T> GetAll()
-        {
-            return _context.Set<T>().ToList();
-        }
+        public IEnumerable<T> GetAll() => _context.Set<T>().ToList();
 
-        public T FindbyId(int id)
-        {
-            return _context.Set<T>().Find(id);
-        }
+        public T Find(int id) => _context.Set<T>().FirstOrDefault(t => t.ID == id);
 
         public T Update(T entity)
         {
