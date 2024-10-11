@@ -10,9 +10,9 @@ namespace ECommerce.Model
 {
     public interface IUnitOfWork :IDisposable
     {
-        IBaseRepository<Product> Products { get; }
+        IProductRepository Products { get; }
         IBaseRepository<Category> Categories { get; }
-        IBaseRepository<Review> Reviews { get; }
+        IReviewRepository Reviews { get; }
         IBaseRepository<Order> Orders { get; }
         IBaseRepository<OrderItem> OrderItems { get; }
         IBaseRepository<ShoppingCart> ShoppingCarts { get; }

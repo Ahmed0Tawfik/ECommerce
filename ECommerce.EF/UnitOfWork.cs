@@ -14,9 +14,9 @@ namespace ECommerce.EF
     {
         private readonly ApplicationDbContext _context;
 
-        public IBaseRepository<Product> Products { get; private set; }
+        public IProductRepository Products { get; private set; }
         public IBaseRepository<Category> Categories { get; private set; }
-        public IBaseRepository<Review> Reviews { get; private set; }
+        public IReviewRepository Reviews { get; private set; }
         public IBaseRepository<Order> Orders { get; private set; }
         public IBaseRepository<OrderItem> OrderItems { get; private set; }
         public IBaseRepository<ShoppingCart> ShoppingCarts { get; private set; }
@@ -26,9 +26,9 @@ namespace ECommerce.EF
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
-            Products = new BaseRepository<Product>(_context);
+            Products = new ProductRepository(_context);
             Categories = new BaseRepository<Category>(_context);
-            Reviews = new BaseRepository<Review>(_context);
+            Reviews = new ReviewRepository(_context);
             Orders = new BaseRepository<Order>(_context);
             OrderItems = new BaseRepository<OrderItem>(_context);
             ShoppingCarts = new BaseRepository<ShoppingCart>(_context);

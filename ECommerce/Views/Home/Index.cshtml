@@ -1,0 +1,150 @@
+﻿@using ECommerce.Model.ViewModels
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model HomeViewModel
+
+
+<section class="slider_section ">
+    <div class="play_btn">
+        <a asp-controller="Product" asp-action="Index">
+            <img src="~/images/play.png" alt="">
+        </a>
+    </div>
+    <div class="number_box">
+        <div>
+            <ol class="carousel-indicators indicator-2">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1">02</li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2">03</li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3">04</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="detail-box">
+                                <h1>
+                                    The Latest
+                                    <span>
+                                        Product Name
+                                    </span>
+                                </h1>
+                                <p>
+                                    HeadLine Description
+                                </p>
+                                <div class="btn-box">
+                                    <a asp-controller="Product" asp-action="Index" class="btn-1">
+                                        Read More
+                                    </a>
+                                    <a asp-controller="Home" asp-action="ContactUs" class="btn-2">
+                                        Contact us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 img-container">
+                        <div class="img-box">
+                            <img src="~/images/slider-img.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- Products -->
+
+@section btn{
+    <a asp-controller="Product" asp-action="Index" class="brand-btn">
+        See More
+    </a>
+}
+@section h2prod{
+    <h2>
+        Featured Products
+    </h2>
+}
+@section FeaturedProducts{
+
+    @foreach(var Product in Model.FeaturedProducts)
+    {
+        <div class="box">
+
+
+            <a asp-controller="Product" asp-action="GetSingleProduct" asp-route-id="@Product.ID">
+
+
+                <div class="img-box">
+                    <img src="~/images/@Product.ImageUrl" alt="Product Image">
+                </div>
+
+                <div class="detail-box">
+                    <h6 class="price">
+                        @Product.Price
+                    </h6>
+                    <h6>
+                        @Product.Name
+                    </h6>
+                </div>
+
+            </a>
+        </div>
+    }
+}
+
+<!--Reviews Section-->
+
+@section h2rev{
+    <h2>
+        Reviews
+    </h2>
+}
+@section Reviews{
+
+    @foreach(var Review in Model.Reviews)
+    {
+        <div class="client_box b-1">
+
+            <div class="client-id">
+
+                <div class="name">
+
+                    <h5>
+                        @Review.User.FirstName @Review.User.LastName
+                    </h5>
+
+                    <p>
+                        @Review.Product.Name
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="detail">
+
+                <p>
+                    @Review.Content
+                </p>
+
+
+            </div>
+
+        </div>
+    }
+}

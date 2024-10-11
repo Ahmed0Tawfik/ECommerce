@@ -18,8 +18,4 @@
     <ProjectReference Include="..\ECommerce.Model\ECommerce.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Home\" />
-  </ItemGroup>
-
 </Project>
