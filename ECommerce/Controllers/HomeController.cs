@@ -1,4 +1,5 @@
-﻿using ECommerce.Model.Interfaces;
+﻿using ECommerce.Model;
+using ECommerce.Model.Interfaces;
 using ECommerce.Model.Models;
 using ECommerce.Model.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,15 @@ namespace ECommerce.Controllers
 {
     public class HomeController : Controller
     {
-        // Injecting the IBaseRepository interface of the wanted entity => (IBaseRepository<T> _wantedEntityname Repo)
+        // Injecting the IUNITOFWORK interface
+
+        private readonly IUnitOfWork _unitOfWork;
+
+        public HomeController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         public IActionResult Index()
         {
             var model = new HomeViewModel();

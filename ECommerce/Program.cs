@@ -1,4 +1,7 @@
 using ECommerce.EF;
+using ECommerce.EF.Repositories;
+using ECommerce.Model;
+using ECommerce.Model.Interfaces;
 using ECommerce.Model.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +26,9 @@ namespace ECommerce
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
+
+            //builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            builder.Services.AddTransient<IUnitOfWork,UnitOfWork>();
 
 
 
