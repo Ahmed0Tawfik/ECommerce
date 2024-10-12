@@ -114,17 +114,13 @@ body {
   }
 }
 
-.sub_page {
-  .hero_area {
-    height: auto;
+.sub_page .hero_area {
+    height: 10vh;
     background-size: auto;
   }
 
-
-}
-
-.hero_area.sub_pages {
-  height: auto;
+.hero_area .sub_pages {
+    height: 10vh;
 }
 
 .header_section {
