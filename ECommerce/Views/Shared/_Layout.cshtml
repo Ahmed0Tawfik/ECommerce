@@ -20,6 +20,54 @@
   <link href=~/css/style.css rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href=~/css/bootstrap.css />
   <link href=~/css/responsive.css rel="stylesheet" />
+    <style>
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style for the dropdown button */
+        .dropbtn {
+            color: #000;
+            padding: 10px 15px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Style the dropdown button on hover */
+        .dropdown:hover .dropbtn {
+            background-color: #e2e6ea;
+        }
+    </style>
 </head>
 
 <body>
@@ -72,14 +120,15 @@
                   <li class="nav-item">
                                     <a class="nav-link" asp-controller="Product" asp-action="Index">Products </a>
                   </li>
-                            <li class="dropdown nav-item ">
+
+                            @* <li class="dropdown nav-item">
                                 <a class="dropbtn nav-link">Categories</a>
                                 <div class="dropdown-content">
-
+                                    <!-- Dropdown items can be dynamically inserted using  -->
                                     @RenderSection("Categories", required: false)
-
                                 </div>
-                            </li>
+                            </li> *@
+                            
               
                   <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="ContactUs">Contact us</a>

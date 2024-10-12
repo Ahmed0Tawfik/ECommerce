@@ -53,9 +53,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Product" asp-action="Index">Products </a>
                             </li>
-                            <li class="nav-item">
+                           @*  <li class="nav-item">
                                 <a class="nav-link" asp-controller="Category" asp-action="Index">Categories </a>
-                            </li>
+                            </li> *@
 
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Home" asp-action="ContactUs">Contact us</a>
@@ -125,10 +125,16 @@
 
             </div>
 
+           
+
 
             @RenderSection("btn", required: false)
 
         </div>
+
+        <div class="navigation">
+            @RenderSection("Navigation", required: false)
+           </div>
     </section>
 
     <!-- Products -->

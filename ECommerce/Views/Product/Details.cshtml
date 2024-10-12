@@ -1,0 +1,67 @@
+﻿@using ECommerce.Model.Models
+@model Product
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/_SubPageLayout.cshtml";
+}
+
+
+
+@section h2prod {
+    <h2>
+        Product Details
+    </h2>
+}
+
+@section FeaturedProducts {
+    <style>
+        .product-card {
+            border-radius: 15px;
+            border: 1px solid #e0e0e0;
+            transition: 0.3s;
+        }
+
+            .product-card:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+        .product-image {
+            object-fit:fill;
+            height: 450px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-price {
+            color: #28a745;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+
+
+    <div class="container mt-5">
+        <div class="card product-card">
+            <img src="~/images/@Model.ImageUrl" alt="Product Image" class="card-img-top product-image img-fluid">
+            <div class="product-info">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="product-price">$@Model.Price</p>
+                <p class="product-description">@Model.Description</p>
+
+                <a asp-controller="Cart" asp-action="AddToCart" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+
+         
+}

@@ -13,5 +13,7 @@ namespace ECommerce.Model.Interfaces
         
         // Get 4 random products as featured products 
         public IEnumerable<Product> GetFeaturedProducts();
+
+        public IEnumerable<Product> GetAllWithCategory();
     }
 }

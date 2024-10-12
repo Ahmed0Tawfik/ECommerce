@@ -1,5 +1,6 @@
 ﻿using ECommerce.Model.Interfaces;
 using ECommerce.Model.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,16 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EF.Repositories
 {
-    public class ProductRepository : BaseRepository<Product>,IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         public ProductRepository(ApplicationDbContext context):base(context)
         {
         }
 
+        public IEnumerable<Product> GetAllWithCategory()
+        {
+            return _context.Products.Include(x => x.Category).ToList();
+        }
         public IEnumerable<Product> GetFeaturedProducts()
         {
             //return 4 random products
@@ -22,7 +27,7 @@ namespace ECommerce.EF.Repositories
 
         public IEnumerable<Product> GetProductsByCategory(int categoryId)
         {
-            throw new NotImplementedException();
+            return _context.Products.Where(x => x.CategoryId == categoryId).ToList();
         }
     }
 }
