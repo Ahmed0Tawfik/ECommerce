@@ -14,5 +14,7 @@ namespace ECommerce.Model.ViewModels
         public IEnumerable<Product> FeaturedProducts { get; set; }
         public IEnumerable<Review> Reviews { get; set; }
 
+        public IEnumerable<Category> Categories { get; set; }
+
     }
 }

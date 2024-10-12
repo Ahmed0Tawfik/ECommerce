@@ -77,7 +77,7 @@ body {
 
 .sub_page .hero_area {
     height: 10vh;
-  background-size: auto;
+    background-size: auto;
 }
 
 .hero_area .sub_pages {
@@ -740,9 +740,14 @@ a:focus {
   margin-bottom: 65px;
 }
 
-.contact_section form {
-  padding-right: 35px;
-}
+    .contact_section form {
+        padding-right: 35px;
+        padding-left: 35px;
+        padding-top: 35px;
+        border-radius: 8px;
+        -webkit-box-shadow: 0px 2px 50px 20px rgba(0, 0, 0, 0.16);
+        background-color: #fff;
+    }
 
 .contact_section input {
   width: 100%;
@@ -750,6 +755,7 @@ a:focus {
   height: 50px;
   margin-bottom: 25px;
   padding-left: 25px;
+  border-radius:8px;
   background-color: transparent;
   outline: none;
   color: #101010;
@@ -777,19 +783,21 @@ a:focus {
   height: 120px;
 }
 
-.contact_section button {
-  display: inline-block;
-  padding: 12px 45px;
-  background-color: #24d278;
-  color: #ffffff;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  border: 1px solid transparent;
-  border-radius: 30px;
-  border-radius: 30px;
-  color: #fff;
-  margin-top: 35px;
-}
+    .contact_section button {
+        display: inline-block;
+        padding: 12px 45px;
+        ;
+        background-color: #24d278;
+        color: #ffffff;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        border: 1px solid transparent;
+        border-radius: 30px;
+        border-radius: 30px;
+        color: #fff;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
 
 .contact_section button:hover {
   background-color: transparent;
@@ -1074,3 +1082,28 @@ a:focus {
           transform: rotate(-45deg) translate(7px, -10px);
 }
 /*# sourceMappingURL=style.css.map */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: 0.1s;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        transition: 0.1s;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }

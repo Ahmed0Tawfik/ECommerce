@@ -1,0 +1,100 @@
+﻿@using FirstMVC.ViewModel
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Create Admin";
+    Layout = "~/Views/Shared/_SubPageLayout.cshtml";
+}
+
+@section ContactUs {
+    <section class="contact_section layout_padding">
+        <div class="container ">
+            <div class="heading_container">
+                <h2 class="">
+                    Create Admin
+                </h2>
+            </div>
+
+        </div>
+
+        <hr />
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form asp-action="SaveAdmin" asp-controller="Account">
+                        <div asp-validation-summary="All" class="text-danger" style="color: red"></div>
+
+                        <div>
+                            <label asp-for="FName"></label>
+                            <input asp-for="FName" placeholder="First name" />
+                            <span asp-validation-for="FName" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="LName"></label>
+                            <input asp-for="LName" placeholder="Last name" />
+                            <span asp-validation-for="LName" class="text-danger"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="UserName"></label>
+                            <input asp-for="UserName" placeholder="Username" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label asp-for="ConfirmedPassword"></label>
+                            <input asp-for="ConfirmedPassword" placeholder="Confirm Password" />
+                            <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+                        </div>
+
+                        <div>
+                            <label asp-for="PhoneNumber"></label>
+                            <input asp-for="PhoneNumber" placeholder="Phone" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                     
+
+
+                        <div class="d-flex ">
+
+                            <button type="submit">CreateAdmin</button>
+
+                        </div>
+
+                        
+
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="map_container">
+                        <div class="map-responsive">
+                            <iframe src=""
+                                    width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%"
+                                    allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

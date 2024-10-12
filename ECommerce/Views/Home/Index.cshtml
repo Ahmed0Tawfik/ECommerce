@@ -5,7 +5,12 @@
 
 @model HomeViewModel
 
-
+@section Categories {
+    @foreach (var item in Model.Categories)
+    {
+        <a asp-controller="Product" asp-action="GetProductsByCategory" asp-route-id="@item.ID">@item.Name</a>
+    }
+}
 <section class="slider_section ">
     <div class="play_btn">
         <a asp-controller="Product" asp-action="Index">

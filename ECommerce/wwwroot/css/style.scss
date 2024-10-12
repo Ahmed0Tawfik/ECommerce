@@ -37,6 +37,26 @@ $primary1: #24d278;
   font-weight: bold;
 }
 
+.mybtn {
+    display: inline-block;
+    padding: 12px 45px;
+    background-color: #24d278;
+    color: #ffffff;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    border-radius: 30px;
+    color: #fff;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.mybtn button:hover{
+        background-color: transparent;
+    border-color: #24d278;
+    color: #24d278;
+
+}
 body {
   @include main-font();
   color: #0c0c0c;
@@ -117,7 +137,7 @@ body {
 .sub_page .hero_area {
     height: 10vh;
     background-size: auto;
-  }
+}
 
 .hero_area .sub_pages {
     height: 10vh;
@@ -143,6 +163,7 @@ body {
       display: flex;
       color: $white;
       align-items: center;
+      text-decoration:none;
 
       img {
         min-width: 20px;

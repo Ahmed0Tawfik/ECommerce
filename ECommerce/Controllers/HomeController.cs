@@ -22,6 +22,7 @@ namespace ECommerce.Controllers
             var model = new HomeViewModel();
             model.FeaturedProducts = _unitOfWork.Products.GetFeaturedProducts();
             model.Reviews = _unitOfWork.Reviews.GetFeaturedReviews();
+            model.Categories = _unitOfWork.Categories.GetAll();
 
 
             //get 4 random products to display in the featured products section from the repository of products and 2 reviews from the repository of reviews 
