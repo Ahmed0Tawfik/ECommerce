@@ -30,14 +30,16 @@ namespace ECommerce.Controllers
             return View("Index", model);
         }
 
-        public IActionResult About()
-        {
-            return View("About");
-        }
+       
 
         public IActionResult ContactUs()
         {
             return View("ContactUs");
+        }
+
+        public IActionResult Error()
+        {
+            return View("Error");
         }
     }
 }

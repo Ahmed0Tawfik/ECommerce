@@ -25,6 +25,6 @@ namespace ECommerce.Model.Models
         [Required(ErrorMessage = "Product ID is required")]
         public int ProductId { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

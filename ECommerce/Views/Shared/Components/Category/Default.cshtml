@@ -1,0 +1,9 @@
+﻿@using ECommerce.Model.Models
+@model List<Category>
+
+ @foreach(var category in Model)
+{
+<li class=" block px-4 py-2 hover:bg-gray-50 rounded-lg">
+<a asp-controller="Product" asp-action="ByCategory" asp-route-id="@category.ID">@category.Name</a>
+ </li>
+}

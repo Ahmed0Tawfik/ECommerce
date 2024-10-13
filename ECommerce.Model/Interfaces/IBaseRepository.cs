@@ -10,6 +10,9 @@ namespace ECommerce.Model.Interfaces
     {
         T Find(int id);
         IEnumerable<T> GetAll();
+
+        IQueryable<T> GetAllQueryable();
+
         T Add(T entity);
         T Update(T entity);
         void Delete(int id);

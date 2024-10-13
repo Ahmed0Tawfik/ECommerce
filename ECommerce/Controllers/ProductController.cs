@@ -12,7 +12,7 @@ namespace ECommerce.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        public IActionResult Index(int page = 1, int pageSize = 8)
+        public IActionResult Index(int page = 1, int pageSize = 6)
         {
             var Products = _unitOfWork.Products.GetAllWithCategory()
                 .Skip((page - 1) * pageSize)
@@ -40,11 +40,25 @@ namespace ECommerce.Controllers
             return View("Details", product);
         }
 
-        /*public  IActionResult ByCategory(int Id)
+        public IActionResult ByCategory(int id, int page = 1, int pageSize = 6)
         {
-            var products = _unitOfWork.Products.GetProductsByCategory(Id);
+            var Products = _unitOfWork.Products.GetProductsByCategory(id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
 
-            return View("Index", products);
-        }*/
+            var totalProducts = _unitOfWork.Products.GetProductsByCategory(id).Count();
+
+            var totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
+
+            var model = new ProductListViewModel
+            {
+                Products = Products,
+                CurrentPage = page,
+                TotalPages = totalPages
+            };
+
+            return View("Index", model);
+        }
     }
 }

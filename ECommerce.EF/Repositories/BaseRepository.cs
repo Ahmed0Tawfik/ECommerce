@@ -32,5 +32,10 @@ namespace ECommerce.EF.Repositories
             _context.Set<T>().Update(entity);
             return entity;
         }
+
+        public IQueryable<T> GetAllQueryable()
+        {
+            return _context.Set<T>();
+        }
     }
 }

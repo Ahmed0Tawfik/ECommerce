@@ -19,5 +19,7 @@ namespace ECommerce.Model.Models
         public ApplicationUser User { get; set; }
 
         public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        public decimal TotalAmount => ShoppingCartItems.Sum(item => item.Quantity * item.Product.Price);
     }
 }

@@ -142,5 +142,13 @@ namespace ECommerce.Controllers
 
             return View("CreateAdmin", model);
         }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Profile()
+        {
+            
+            return View("Profile");
+        }
     }
 }
