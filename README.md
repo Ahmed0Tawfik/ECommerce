@@ -1,4 +1,4 @@
-# E-Commerce Project
+# E-Commerce Project - Still Open For Modification 
 
 ## Overview
 
@@ -33,10 +33,8 @@ This is a robust e-commerce application developed using the .NET MVC framework. 
 - **Order Processing:** Users can place orders and receive SMS notifications regarding their order status.
 - **Responsive Design:** The application is designed to be responsive and user-friendly across devices.
 
-## Getting Started
 
-To get a local copy of the project, follow these steps:
+## Walkthrough Video
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Ahmed0Tawfik/ECommerce.git
+[![Watch the video](https://img.youtube.com/vi/VmAeStCizL0/0.jpg)](https://www.youtube.com/watch?v=VmAeStCizL0)
+
