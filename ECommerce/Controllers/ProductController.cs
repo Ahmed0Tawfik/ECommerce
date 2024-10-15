@@ -1,7 +1,10 @@
 ﻿using ECommerce.Model;
+using ECommerce.Model.Models;
 using ECommerce.Model.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace ECommerce.Controllers
 {
@@ -35,7 +38,7 @@ namespace ECommerce.Controllers
 
         public IActionResult Details(int id)
         {
-            var product = _unitOfWork.Products.Find(id);
+            var product = _unitOfWork.Products.FindWithReview(id);
             
             return View("Details", product);
         }
@@ -59,6 +62,24 @@ namespace ECommerce.Controllers
             };
 
             return View("Index", model);
+        }
+
+        [Authorize]
+        public IActionResult AddReview(int id, string content)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get logged-in user ID
+
+            var review = new Review
+            {
+                UserId = userId,
+                ProductId = id,
+                Content = content
+            };
+
+            _unitOfWork.Reviews.Add(review);
+            _unitOfWork.Complete();
+            TempData["Login"] = "Review added successfully";
+            return RedirectToAction("Details", new { id = id });
         }
     }
 }

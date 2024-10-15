@@ -19,6 +19,11 @@ namespace ECommerce.EF.Repositories
         {
             return _context.Products.Include(x => x.Category).ToList();
         }
+
+        public Product FindWithReview(int id)
+        {
+            return _context.Products.Include(x => x.Reviews).ThenInclude(x => x.User).FirstOrDefault(x => x.ID == id);
+        }
         public IEnumerable<Product> GetFeaturedProducts()
         {
             //return 4 random products

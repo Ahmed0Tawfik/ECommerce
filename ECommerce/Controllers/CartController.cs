@@ -33,7 +33,11 @@ namespace ECommerce.Controllers
 
             if (cart == null)
             {
-                cart = new ShoppingCart { UserId = userId };
+                cart = new ShoppingCart 
+                { 
+                    UserId = userId,
+                    ShoppingCartItems = new List<ShoppingCartItem>(),
+                };
                 _unitOfWork.ShoppingCarts.Add(cart);
                 _unitOfWork.Complete();
             }
@@ -49,14 +53,16 @@ namespace ECommerce.Controllers
                 .ThenInclude(ci => ci.Product)
                 .FirstOrDefaultAsync(c => c.UserId == userId);
 
+
             var cartItem = cart.ShoppingCartItems.FirstOrDefault(ci => ci.ProductId == Id);
 
             if (cartItem != null)
             {
+                cartItem.Product.Stock += cartItem.Quantity;
                 cart.ShoppingCartItems.Remove(cartItem);
                 _unitOfWork.Complete();
             }
-
+            TempData["Logout"] = "Product removed from cart";
             return RedirectToAction("Index");
         }
 
@@ -70,6 +76,8 @@ namespace ECommerce.Controllers
                                 .ThenInclude(c => c.ShoppingCartItems)
                                 .ThenInclude(ci => ci.Product)
                                 .FirstOrDefaultAsync(u => u.Id == userId); // Get logged-in user ID
+            var product = _unitOfWork.Products.Find(id);
+            product.Stock--;
 
             // Get or create the user's shopping cart
             var shoppingCart = user.ShoppingCart ?? new ShoppingCart { UserId = user.Id, ShoppingCartItems = new List<ShoppingCartItem>() };
@@ -103,6 +111,7 @@ namespace ECommerce.Controllers
             _unitOfWork.Complete();
 
             // Redirect or return success
+            TempData["Login"] = "Product added to cart";
             return RedirectToAction("Index", "Product");
         }
 
@@ -114,9 +123,14 @@ namespace ECommerce.Controllers
                 .ThenInclude(ci => ci.Product)
                 .FirstOrDefaultAsync(c => c.UserId == userId);
 
-            cart.ShoppingCartItems.Clear();
+           foreach(var item in cart.ShoppingCartItems)
+            {
+                item.Product.Stock += item.Quantity;
+            }
+           cart.ShoppingCartItems.Clear();
             _unitOfWork.Complete();
-            return RedirectToAction("Index");
+            TempData["Logout"] = "Cart cleared";
+            return RedirectToAction("Index","Home");
         }
     }
 }

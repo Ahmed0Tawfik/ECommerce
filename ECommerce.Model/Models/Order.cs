@@ -21,10 +21,16 @@ namespace ECommerce.Model.Models
 
         [Required(ErrorMessage = "Order status is required")]
         [StringLength(20, ErrorMessage = "Status cannot be longer than 20 characters")]
-        public string Status { get; set; }
+        public string Status { get; set; } = "Pending";
 
         [Required(ErrorMessage = "Address is required")]
         [StringLength(200, ErrorMessage = "Address cannot be longer than 200 characters")]
+
+        public string OrderFullName { get; set; }
+
+        public PaymentMethod PaymentMethod { get; set; }
+        public string OrderPhoneNumber { get; set; }
+        public string? OptionalEmail { get; set; }
         public string Address { get; set; }
 
         // Navigation property

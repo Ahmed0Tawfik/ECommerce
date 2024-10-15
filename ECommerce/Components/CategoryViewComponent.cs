@@ -15,7 +15,7 @@ namespace FirstMVC.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var categories = _unitOfWork.Categories.GetAll();
-        return View(categories);  
+            return View(categories);  
         }
     }
 }

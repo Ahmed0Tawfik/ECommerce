@@ -53,6 +53,7 @@ namespace ECommerce
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

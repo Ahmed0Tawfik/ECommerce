@@ -2088,4 +2088,15 @@
     <TypeScriptCompile Include="wwwroot\node_modules\yaml\dist\visit.d.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Order\PaymentGate.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Order\OrderConfirmation.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

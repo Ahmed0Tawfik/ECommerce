@@ -1,0 +1,249 @@
+﻿@using ECommerce.Model.Models
+@using ECommerce.Model.ViewModels
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+@model UpdateAccountViewModel
+
+
+<html lang="en">
+<head>
+    <partial name="_HeaderPartial" />
+
+</head>
+<body class="bg-gray-100 font-bold text-black work-sans leading-normal text-base tracking-normal">
+    <!--Nav-->
+    <partial name="_NavPartial" />
+
+    <partial name="_NotificationPartial" />
+
+
+
+
+    <section class="bg-gray-100 py-8 antialiased md:py-8">
+
+        <div class="bg-white rounded-xl mx-auto max-w-screen-lg py-4 px-8 2xl:px-0">
+            <h2 class="mb-4 text-xl font-semibold text-gray-900 sm:text-2xl md:mb-6">My Profile</h2>
+
+            <div class="py-4 md:py-8">
+                <div class="mb-4 grid gap-4 sm:grid-cols-2 sm:gap-8 lg:gap-16">
+                    <div class="space-y-4">
+                        <div class="flex space-x-4">
+                            <svg class="h-16 w-16 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="7" r="4" />
+                                <path d="M4 21c0-5 4-9 8-9s8 4 8 9" />
+                            </svg>
+
+                            <div>
+                                <span class="mb-2 inline-block rounded bg-teal-100 px-2.5 py-0.5 text-xs font-medium text-teal-800 dark:bg-teal-900 dark:text-teal-300"> Customer </span>
+                                <h2 class="flex items-center text-xl font-bold leading-none text-gray-900 sm:text-2xl">@Model.user.FirstName @Model.user.LastName</h2>
+                            </div>
+                        </div>
+                        <dl>
+                            <dt class="font-semibold text-gray-900">Username</dt>
+                            <dd class="text-gray-500">@Model.user.UserName</dd>
+                        </dl>
+
+                        <dl>
+                            <dt class="font-semibold text-gray-900">Email Address</dt>
+                            <dd class="text-gray-500">@Model.user.Email</dd>
+                        </dl>
+
+                       
+                       
+
+                    </div>
+                    <div class="space-y-4">
+                        <dl>
+                            <dt class="font-semibold text-gray-900">Phone Number</dt>
+                            <dd class="text-gray-500">@Model.user.PhoneNumber</dd>
+                        </dl>
+
+                        <dl>
+                            <dt class="font-semibold text-gray-900">Total Number Of Orders:</dt>
+                            <dd class="text-gray-500">@Model.user.Orders.Count()</dd>
+                        </dl>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal toggle -->
+            <div class="flex justify-center m-5">
+                <button id="defaultModalButton" data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-teal-500 hover:bg-teal-400 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                    Edit Profile
+                </button>
+            </div>
+
+
+
+
+            <!-- Main modal -->
+            <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden flex justify-center overflow-y-auto overflow-x-hidden fixed  z-50  w-full md:inset-0 h-modal md:h-full">
+                
+                <div class="relative p-4 w-full max-w-2xl h-full md:h-auto transition  m-5">
+                    <!-- Modal content -->
+                    <div class="relative p-6 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5 shadow-2xl">
+                        <!-- Modal header -->
+                        <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                Edit Profile
+                            </h3>
+                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form asp-action="Update" asp-controller="Account" asp-route-id="@Model.user.Id" >
+                            <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                                <div>
+                                    <label asp-for="Email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                                    <input asp-for="Email" value="@Model.Email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  required="">
+                                </div>
+                                <div>
+                                    <label asp-for="FName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+                                    <input asp-for="FName" value="@Model.FName" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  required="">
+                                </div>
+                                <div>
+                                    <label asp-for="LName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                                    <input asp-for="LName" value="@Model.LName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  required="">
+                                </div>
+
+                                <div>
+                                    <label asp-for="Phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                                    <input asp-for="Phone" value="@Model.Phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  required="">
+                                </div>
+                                
+                              
+                            </div>
+                            <button type="submit" class="text-white inline-flex items-center bg-teal-500 hover:bg-teal-400 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                Save
+                                <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.707 5.293a1 1 0 0 0-1.414 0L8 12.586 4.707 9.293a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.414 0l8-8a1 1 0 0 0 0-1.414z" />
+                                </svg>
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800 md:p-8">
+                <h3 class="mb-4 text-xl font-semibold text-gray-900">Latest orders</h3>
+
+                @foreach (var item in Model.user.Orders)
+                {
+                    <div class="relative flex flex-wrap items-center gap-y-8 border-b border-gray-200 pb-4 dark:border-gray-700 md:pb-5">
+                        <dl class="w-1/2 sm:w-48">
+                            <dt class="text-base font-medium text-gray-500">Order ID:</dt>
+                            <dd class="mt-1.5 text-base font-semibold text-gray-900">
+                                <a href="#" class="hover:underline">#@item.ID</a>
+                            </dd>
+                        </dl>
+
+                        <dl class="w-1/2 sm:w-1/4 md:flex-1 lg:w-auto">
+                            <dt class="text-base font-medium text-gray-500">Date:</dt>
+                            <dd class="mt-1.5 text-base font-semibold text-gray-900">@item.OrderDate.ToShortDateString()</dd>
+                        </dl>
+
+                        <dl class="w-1/2 sm:w-1/5 md:flex-1 lg:w-auto">
+                            <dt class="text-base font-medium text-gray-500">Price:</dt>
+                            <dd class="mt-1.5 text-base font-semibold text-gray-900">$@item.TotalAmount</dd>
+                        </dl>
+
+                        <dl class="w-1/2 sm:w-1/4 sm:flex-1 lg:w-auto">
+                            <dt class="text-base font-medium text-gray-500">Status:</dt>
+                            <dd class="me-2 mt-1.5 inline-flex shrink-0 items-center rounded bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
+                                <svg class="me-1 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h6l2 4m-8-4v8m0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v9h2m8 0H9m4 0h2m4 0h2v-4m0 0h-5m3.5 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-10 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z"></path>
+                                </svg>
+                                @item.Status
+                            </dd>
+                        </dl>
+
+                        <!-- Actions Button -->
+                        <a asp-action="Details" asp-controller="Order" asp-route-id="@item.ID" id="actionsMenuDropdown@item.ID" class="flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-600 hover:text-white hover:ring-red-600 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 md:w-auto cursor-pointer">
+                            Details
+                            <svg class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512.02 319.26">
+                                <path d="M5.9 48.96 48.97 5.89c7.86-7.86 20.73-7.84 28.56 0l178.48 178.48L434.5 5.89c7.86-7.86 20.74-7.82 28.56 0l43.07 43.07c7.83 7.84 7.83 20.72 0 28.56l-192.41 192.4-.36.37-43.07 43.07c-7.83 7.82-20.7 7.86-28.56 0l-43.07-43.07-.36-.37L5.9 77.52c-7.87-7.86-7.87-20.7 0-28.56z" />
+                            </svg>
+                        </a>
+
+
+                        <!-- Dropdown Menu -->
+                        @* <div id="dropdownOrderModal@item.ID" class="z-10 hidden w-40 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700 absolute">
+                            <ul class="p-2 text-left text-sm font-medium text-gray-500 dark:text-gray-400" aria-labelledby="actionsMenuDropdown@item.ID">
+                                <li>
+                                    <a asp-action="Details" asp-controller="Order" asp-route-id="@item.ID" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        <svg class="me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"></path>
+                                        </svg>
+                                        Details
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-action="Cancel" asp-controller="Order" asp-route-id="@item.ID" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        <svg class="me-1.5 h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m-6-8h6m3 8h1.5a2.25 2.25 0 0 1 2.25 2.25v1.5H4.5v-1.5A2.25 2.25 0 0 1 6.75 16H9m6 0v-1.5a2.25 2.25 0 0 1 2.25-2.25H18v1.5h-1.5A2.25 2.25 0 0 1 15 16z"></path>
+                                        </svg>
+                                        Cancel
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> *@
+
+                        <!-- JavaScript for Dropdown Toggle -->
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function (event) {
+                                document.getElementById('defaultModalButton').click();
+                            });
+
+                            document.addEventListener("DOMContentLoaded", function () {
+                                const modal = document.getElementById('defaultModal');
+                                const modalButton = document.getElementById('defaultModalButton');
+
+                                modalButton.addEventListener('click', function () {
+                                    modal.classList.toggle('hidden'); // Show the modal
+                                });
+
+                                const closeModalButton = modal.querySelector('[data-modal-toggle="defaultModal"]');
+                                if (closeModalButton) {
+                                    closeModalButton.addEventListener('click', function () {
+                                        modal.classList.toggle('hidden'); // Hide the modal
+                                    });
+                                }
+                            });
+
+                        </script>
+
+                    </div>
+                }
+            </div>
+
+               
+            <script>
+                document.addEventListener("DOMContentLoaded", function (event) {
+                    document.getElementById('defaultModalButton').click();
+                });
+            </script>
+            
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

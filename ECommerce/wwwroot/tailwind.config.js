@@ -3,7 +3,9 @@ module.exports = {
   content: [
     './public/HomeIndex.html',
     '/src/**/*.{html,js}',
-    './public/**/*.html',   // Adjust this based on your project structure
+        './public/**/*.html',
+        "./node_modules/flowbite/**/*.js"
+        // Adjust this based on your project structure
   ],
   presets: [],
   darkMode: 'media', // or 'class'
@@ -1067,7 +1069,9 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
+      require('@tailwindcss/forms'),
+      require('flowbite/plugin'),
+
     
   ],
   

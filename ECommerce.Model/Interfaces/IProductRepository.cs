@@ -15,5 +15,8 @@ namespace ECommerce.Model.Interfaces
         public IEnumerable<Product> GetFeaturedProducts();
 
         public IEnumerable<Product> GetAllWithCategory();
+
+        public Product FindWithReview(int id);
+
     }
 }

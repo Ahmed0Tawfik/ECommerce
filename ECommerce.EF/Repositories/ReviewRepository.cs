@@ -1,5 +1,6 @@
 ﻿using ECommerce.Model.Interfaces;
 using ECommerce.Model.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ECommerce.EF.Repositories
 
         public IEnumerable<Review> GetFeaturedReviews()
         {
-            return _context.Reviews.OrderBy(x => Guid.NewGuid()).Take(2).ToList();
+            return _context.Reviews.Include(x => x.User).OrderBy(x => Guid.NewGuid()).Take(2).ToList();
         }
 
         public IEnumerable<Review> GetReviewsByProductId(int productId)

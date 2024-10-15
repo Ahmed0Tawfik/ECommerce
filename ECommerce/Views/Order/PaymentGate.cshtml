@@ -1,0 +1,105 @@
+@using ECommerce.Model.Models
+@using ECommerce.Model.ViewModels
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+@model OrderPaymentViewModel
+
+
+
+
+<html lang="en">
+<head>
+    <partial name="_HeaderPartial" />
+
+</head>
+<body class="bg-gray-100 font-bold text-black work-sans leading-normal text-base tracking-normal">
+    <!--Nav-->
+    <partial name="_NavPartial" />
+
+    <partial name="_NotificationPartial"/>
+
+
+    <section class="bg-white py-8 antialiased md:py-16">
+        <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+            <div class="mx-auto max-w-5xl">
+                <h2 class="text-xl font-semibold text-gray-900 sm:text-2xl">Payment</h2>
+
+                <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12">
+                    <form action="PaymentConfirmation" asp-controller="Order" class="w-full rounded-lg border border-gray-300 bg-white p-4 shadow-sm sm:p-6 lg:max-w-xl lg:p-8">
+                        <div class="mb-6 grid grid-cols-2 gap-4">
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900">Full name (as displayed on card)*</label>
+                                <input asp-for="FullName" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-teal-500 focus:ring-teal-500" placeholder="Bonnie Green" required />
+                            </div>
+
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="card-number-input" class="mb-2 block text-sm font-medium text-gray-900">Card number*</label>
+                                <input asp-for="CardNumber" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-teal-500 focus:ring-teal-500" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="^4[0-9]{12}(?:[0-9]{3})?$" required />
+                            </div>
+
+                            <div>
+                                <label for="card-expiration-input" class="mb-2 block text-sm font-medium text-gray-900">Card expiration*</label>
+                                <div class="relative">
+                                    <input asp-for="CardExpiration" datepicker datepicker-format="mm/yy" id="card-expiration-input" type="text" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-3.5 text-sm text-gray-900 focus:border-teal-500 focus:ring-teal-500" placeholder="12/23" required />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="cvv-input" class="mb-2 flex items-center gap-1 text-sm font-medium text-gray-900">
+                                    CVV*
+                                </label>
+                                <input asp-for="CVV" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-teal-500 focus:ring-teal-500" placeholder="•••" required />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="flex w-full items-center justify-center rounded-lg bg-teal-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-teal-400 focus:outline-none focus:ring-4 focus:ring-teal-300">Pay now</button>
+                    </form>
+
+                    <div class="mt-6 grow sm:mt-8 lg:mt-0">
+                        <div class="space-y-4 rounded-lg border border-gray-200 bg-gray-50 p-6">
+                            <div class="space-y-2">
+
+                                <dl class="flex items-center justify-between gap-4">
+                                    <dt class="text-base font-normal text-gray-500">Customer Name</dt>
+                                    <dd class="text-base font-medium text-gray-900">@Model.Order.OrderFullName</dd>
+                                </dl>
+
+                               
+
+                                <dl class="flex items-center justify-between gap-4">
+                                    <dt class="text-base font-normal text-gray-500">Phone Number</dt>
+                                    <dd class="text-base font-medium text-gray-900">@Model.Order.OrderPhoneNumber</dd>
+                                </dl>
+                            </div>
+
+                            <dl class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2">
+                                <dt class="text-base font-bold text-gray-900">Total</dt>
+                                <dd class="text-base font-bold text-gray-900">$@Model.Order.TotalAmount</dd>
+                            </dl>
+                        </div>
+
+                        <div class="mt-6 flex items-center justify-center gap-8">
+                            <img class="h-8 w-auto" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/paypal.svg" alt="PayPal Logo" />
+                            <img class="h-8 w-auto" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/visa.svg" alt="Visa Logo" />
+                            <img class="h-8 w-auto" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/mastercard.svg" alt="Mastercard Logo" />
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mt-6 text-center text-gray-500 sm:mt-8 lg:text-left">
+                    Payment processed by <a href="#" title="" class="font-medium text-teal-500 underline hover:no-underline">Paddle</a> for <a href="#" title="" class="font-medium text-teal-500 underline hover:no-underline">Flowbite LLC</a> - United States Of America
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+
+
+
+
+</body>
+</html>
